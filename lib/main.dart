@@ -1,4 +1,4 @@
-import 'package:denguecare/views/login_page.dart';
+import 'package:denguecare/views/userregister_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.green),
       debugShowCheckedModeBanner: false,
       title: 'Dengue Care App',
-      home: const LoginPage(),
+      home: const UserRegisterPage(),
     );
   }
 }
