@@ -1,5 +1,8 @@
-import 'package:denguecare/views/userregister_page.dart';
+import 'package:denguecare/views/userhome_page.dart';
+import 'package:denguecare/views/userlogin_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,11 +14,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final box = GetStorage();
+    final token = box.read('token');
+    return GetMaterialApp(
       theme: ThemeData(primarySwatch: Colors.green),
       debugShowCheckedModeBanner: false,
       title: 'Dengue Care App',
-      home: const UserRegisterPage(),
+      home: token == null ? const UserLoginPage() : const UserHomePage(),
     );
   }
 }
