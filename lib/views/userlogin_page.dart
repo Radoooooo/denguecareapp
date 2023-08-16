@@ -87,7 +87,8 @@ class _UserLoginPageState extends State<UserLoginPage> {
                                 email: _emailController.text.trim(),
                                 password: _passwordController.text.trim(),
                               );
-                            } else if (_selectedUserType == 'Admin') {
+                            }
+                            if (_selectedUserType == 'Admin') {
                               await _authenticationController.adminLogin(
                                 email: _emailController.text.trim(),
                                 password: _passwordController.text.trim(),
