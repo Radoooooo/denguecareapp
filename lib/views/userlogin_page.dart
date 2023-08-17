@@ -48,8 +48,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
                             value: userType,
                             child: Text(
                               userType,
-                              style:
-                                  GoogleFonts.poppins(fontSize: size * 0.040),
+                              style: GoogleFonts.poppins(fontSize: 16),
                             ),
                           );
                         }).toList(),
