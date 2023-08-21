@@ -1,6 +1,6 @@
 import 'package:denguecare/views/userregister_page.dart';
-import 'package:denguecare/views/widgets/input_email_widget.dart';
 import 'package:denguecare/views/widgets/input_widget.dart';
+import 'package:denguecare/views/widgets/input_password_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -20,11 +20,13 @@ class _UserLoginPageState extends State<UserLoginPage> {
   final List<String> _userTypes = ['User', 'Admin'];
   final AuthenticationController _authenticationController =
       Get.put(AuthenticationController());
+  bool _isPasswordVisible = false;
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size.width;
+    // var size = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: const Color.fromARGB(255, 118, 162, 120),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(
@@ -32,9 +34,10 @@ class _UserLoginPageState extends State<UserLoginPage> {
             ),
             child: Card(
               elevation: 8,
-              child: SingleChildScrollView(
-                child: Container(
-                  padding: const EdgeInsets.all(24),
+              child: Container(
+                padding: const EdgeInsets.all(32.0),
+                constraints: const BoxConstraints(maxWidth: 360),
+                child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -59,16 +62,28 @@ class _UserLoginPageState extends State<UserLoginPage> {
                         },
                       ),
                       const SizedBox(height: 20),
-                      InputEmailWidget(
+                      InputWidget(
                         hintText: "Email",
                         controller: _emailController,
                         obscureText: false,
                       ),
                       const SizedBox(height: 20),
-                      InputWidget(
-                          hintText: "Password",
-                          controller: _passwordController,
-                          obscureText: true),
+                      InputPasswordWidget(
+                        hintText: "Password",
+                        controller: _passwordController,
+                        obscureText: _isPasswordVisible,
+                        iconButton: IconButton(
+                          icon: Icon(_isPasswordVisible
+                              ? Icons.visibility_off
+                              : Icons.visibility),
+                          onPressed: () {
+                            setState(() {
+                              _isPasswordVisible = !_isPasswordVisible;
+                            });
+                          },
+                          //padding: const EdgeInsets.symmetric(vertical: 5),
+                        ),
+                      ),
                       const SizedBox(height: 20),
                       SizedBox(
                         width: double.infinity,
@@ -100,8 +115,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
                                     color: Colors.white)
                                 : Text(
                                     "Login",
-                                    style: GoogleFonts.poppins(
-                                        fontSize: size * 0.040),
+                                    style: GoogleFonts.poppins(fontSize: 20),
                                   );
                           }),
                         ),
@@ -114,7 +128,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
                         child: Text(
                           "Don't have an account? Sign up now!",
                           style: GoogleFonts.poppins(
-                              fontSize: size * 0.030, color: Colors.blue),
+                              fontSize: 12, color: Colors.blue),
                         ),
                       ),
                     ],
