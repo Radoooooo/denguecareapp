@@ -1,6 +1,8 @@
 import 'package:denguecare/controllers/authentication.dart';
 import 'package:denguecare/views/userlogin_page.dart';
 
+import 'package:denguecare/views/widgets/input_age_widget.dart';
+import 'package:denguecare/views/widgets/input_confirmpass_widget.dart';
 import 'package:denguecare/views/widgets/input_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,6 +24,9 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
       TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   final AuthenticationController _authenticationController =
       Get.put(AuthenticationController());
   void clear() {
@@ -33,6 +38,7 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
     _passwordController.text = "";
   }
 
+  bool _isPasswordNotVisible = true;
   @override
   Widget build(BuildContext context) {
     // var size = MediaQuery.of(context).size.width;
@@ -63,7 +69,7 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                           obscureText: false,
                         ),
                         const SizedBox(height: 20),
-                        InputWidget(
+                        InputAgeWidget(
                           hintText: "Age",
                           controller: _ageController,
                           obscureText: false,
@@ -92,10 +98,21 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                           obscureText: false,
                         ),
                         const SizedBox(height: 20),
-                        InputWidget(
+                        InputConfirmPassWidget(
                           hintText: "Password",
                           controller: _passwordController,
-                          obscureText: true,
+                          confirmController: _confirmPasswordController,
+                          obscureText: _isPasswordNotVisible,
+                          iconButton: IconButton(
+                            icon: Icon(_isPasswordNotVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off),
+                            onPressed: () {
+                              setState(() {
+                                _isPasswordNotVisible = !_isPasswordNotVisible;
+                              });
+                            },
+                          ),
                         ),
                         const SizedBox(height: 20),
                         SizedBox(

@@ -17,10 +17,11 @@ class InputPasswordWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey[300],
+        color: Colors.grey[200],
         borderRadius: BorderRadius.circular(10),
       ),
       width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: TextField(
         obscureText: obscureText,
         controller: controller,
@@ -28,7 +29,7 @@ class InputPasswordWidget extends StatelessWidget {
             border: InputBorder.none,
             hintText: hintText,
             hintStyle: GoogleFonts.poppins(),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+            // contentPadding: const EdgeInsets.symmetric(horizontal: 8),
             suffixIcon: iconButton),
       ),
     );

@@ -20,7 +20,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
   final List<String> _userTypes = ['User', 'Admin'];
   final AuthenticationController _authenticationController =
       Get.put(AuthenticationController());
-  bool _isPasswordVisible = false;
+  bool _isPasswordNotVisible = true;
   @override
   Widget build(BuildContext context) {
     // var size = MediaQuery.of(context).size.width;
@@ -71,14 +71,14 @@ class _UserLoginPageState extends State<UserLoginPage> {
                       InputPasswordWidget(
                         hintText: "Password",
                         controller: _passwordController,
-                        obscureText: _isPasswordVisible,
+                        obscureText: _isPasswordNotVisible,
                         iconButton: IconButton(
-                          icon: Icon(_isPasswordVisible
-                              ? Icons.visibility_off
-                              : Icons.visibility),
+                          icon: Icon(_isPasswordNotVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off),
                           onPressed: () {
                             setState(() {
-                              _isPasswordVisible = !_isPasswordVisible;
+                              _isPasswordNotVisible = !_isPasswordNotVisible;
                             });
                           },
                           //padding: const EdgeInsets.symmetric(vertical: 5),
