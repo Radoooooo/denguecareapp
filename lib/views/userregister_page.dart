@@ -41,7 +41,6 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
   bool _isPasswordNotVisible = true;
   @override
   Widget build(BuildContext context) {
-    // var size = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 118, 162, 120),
@@ -53,116 +52,124 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
             child: Card(
               child: Container(
                 padding: const EdgeInsets.all(32.0),
-                constraints: const BoxConstraints(maxWidth: 360),
+                constraints: const BoxConstraints(maxWidth: 370),
                 child: SingleChildScrollView(
-                  child: Container(
-                    padding: const EdgeInsets.all(24),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('images/logo-no-background.png'),
-                        const SizedBox(height: 20),
-                        const SizedBox(height: 20),
-                        InputWidget(
-                          hintText: "Name",
-                          controller: _nameController,
-                          obscureText: false,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset('images/logo-no-background.png'),
+                      const SizedBox(height: 20),
+                      const SizedBox(height: 20),
+                      InputWidget(
+                        hintText: "Name",
+                        controller: _nameController,
+                        obscureText: false,
+                      ),
+                      const SizedBox(height: 20),
+                      InputAgeWidget(
+                        hintText: "Age",
+                        controller: _ageController,
+                        obscureText: false,
+                      ),
+                      const SizedBox(height: 20),
+                      InputWidget(
+                        hintText: "Sex",
+                        controller: _sexController,
+                        obscureText: false,
+                      ),
+                      const SizedBox(height: 20),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        const SizedBox(height: 20),
-                        InputAgeWidget(
-                          hintText: "Age",
-                          controller: _ageController,
-                          obscureText: false,
-                        ),
-                        const SizedBox(height: 20),
-                        InputWidget(
-                          hintText: "Sex",
-                          controller: _sexController,
-                          obscureText: false,
-                        ),
-                        const SizedBox(height: 20),
-                        IntlPhoneField(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: IntlPhoneField(
                           initialCountryCode: 'PH',
+                          showCountryFlag: false,
+                          disableLengthCheck: true,
                           controller: _contactNumberController,
-                          decoration: const InputDecoration(
-                            labelText: 'Contact Number',
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(),
-                            ),
+                          decoration: InputDecoration(
+                            hintText: "Contact number",
+                            border: InputBorder.none,
+                            hintStyle: GoogleFonts.poppins(),
+
+                            // border: UnderlineInputBorder(),
                           ),
                         ),
-                        const SizedBox(height: 16),
-                        InputWidget(
-                          hintText: "Email",
-                          controller: _emailController,
-                          obscureText: false,
-                        ),
-                        const SizedBox(height: 20),
-                        InputConfirmPassWidget(
-                          hintText: "Password",
-                          controller: _passwordController,
-                          confirmController: _confirmPasswordController,
-                          obscureText: _isPasswordNotVisible,
-                          iconButton: IconButton(
-                            icon: Icon(_isPasswordNotVisible
-                                ? Icons.visibility
-                                : Icons.visibility_off),
-                            onPressed: () {
-                              setState(() {
-                                _isPasswordNotVisible = !_isPasswordNotVisible;
-                              });
-                            },
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              elevation: 0,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 50,
-                                vertical: 15,
-                              ),
-                            ),
-                            onPressed: () async {
-                              await _authenticationController.userRegister(
-                                name: _nameController.text.trim(),
-                                age: _ageController.text.trim(),
-                                sex: _sexController.text.trim(),
-                                contactNumber:
-                                    _contactNumberController.text.trim(),
-                                email: _emailController.text.trim(),
-                                password: _passwordController.text.trim(),
-                              );
-                              clear();
-                              Get.offAll(() => const UserLoginPage());
-                            },
-                            child: Obx(() {
-                              return _authenticationController.isLoading.value
-                                  ? const CircularProgressIndicator(
-                                      color: Colors.white,
-                                    )
-                                  : Text(
-                                      "Register",
-                                      style: GoogleFonts.poppins(fontSize: 20),
-                                    );
-                            }),
-                          ),
-                        ),
-                        const SizedBox(height: 14),
-                        InkWell(
-                          onTap: () {
-                            Get.to(() => const UserLoginPage());
+                      ),
+                      const SizedBox(height: 16),
+                      InputWidget(
+                        hintText: "Email",
+                        controller: _emailController,
+                        obscureText: false,
+                      ),
+                      const SizedBox(height: 20),
+                      InputConfirmPassWidget(
+                        hintText: "Password",
+                        controller: _passwordController,
+                        confirmController: _confirmPasswordController,
+                        obscureText: _isPasswordNotVisible,
+                        iconButton: IconButton(
+                          icon: Icon(_isPasswordNotVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                          onPressed: () {
+                            setState(() {
+                              _isPasswordNotVisible = !_isPasswordNotVisible;
+                            });
                           },
-                          child: Text(
-                            "Already have an accont? Sign in!",
-                            style: GoogleFonts.poppins(
-                                fontSize: 12, color: Colors.blue),
-                          ),
                         ),
-                      ],
-                    ),
+                      ),
+                      const SizedBox(height: 20),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 50,
+                              vertical: 15,
+                            ),
+                          ),
+                          onPressed: () async {
+                            await _authenticationController.userRegister(
+                              name: _nameController.text.trim(),
+                              age: _ageController.text.trim(),
+                              sex: _sexController.text.trim(),
+                              contactNumber:
+                                  _contactNumberController.text.trim(),
+                              email: _emailController.text.trim(),
+                              password: _passwordController.text.trim(),
+                            );
+                            clear();
+                            Get.offAll(() => const UserLoginPage());
+                          },
+                          child: Obx(() {
+                            return _authenticationController.isLoading.value
+                                ? const CircularProgressIndicator(
+                                    color: Colors.white,
+                                  )
+                                : Text(
+                                    "Register",
+                                    style: GoogleFonts.poppins(fontSize: 20),
+                                  );
+                          }),
+                        ),
+                      ),
+                      const SizedBox(height: 14),
+                      InkWell(
+                        onTap: () {
+                          Get.to(() => const UserLoginPage());
+                        },
+                        child: Text(
+                          "Already have an accont? Sign in!",
+                          style: GoogleFonts.poppins(
+                              fontSize: 12, color: Colors.blue),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),

@@ -23,7 +23,6 @@ class _UserLoginPageState extends State<UserLoginPage> {
   bool _isPasswordNotVisible = true;
   @override
   Widget build(BuildContext context) {
-    // var size = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 118, 162, 120),
