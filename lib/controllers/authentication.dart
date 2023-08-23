@@ -1,12 +1,13 @@
 import 'dart:convert';
 import 'package:denguecare/constants/constants.dart';
-import 'package:denguecare/views/userlogin_page.dart';
-import 'package:denguecare/views/userregister_page.dart';
+import 'package:denguecare/views/admin/admin_homepage.dart';
+import 'package:denguecare/views/login_page.dart';
+import 'package:denguecare/views/user/userregister_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_storage/get_storage.dart';
-import '../views/userhome_page.dart';
+import '../views/user/userhome_page.dart';
 
 class AuthenticationController extends GetxController {
   UserRegisterPage userRegisterPage = const UserRegisterPage();
@@ -136,7 +137,7 @@ class AuthenticationController extends GetxController {
         isLoading.value = false;
         token.value = json.decode(response.body)['token'];
         box.write('token', token.value);
-        Get.offAll(() => const UserHomePage());
+        Get.offAll(() => const AdminMainPage());
       } else {
         isLoading.value = false;
         Get.snackbar(
@@ -170,7 +171,7 @@ class AuthenticationController extends GetxController {
         isLoading.value = false;
         // Logout successful, navigate to login page
 
-        Get.offAll(() => const UserLoginPage());
+        Get.offAll(() => const LoginPage());
       } else {
         // Handle error response
         isLoading.value = false;

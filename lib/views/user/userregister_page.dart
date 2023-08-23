@@ -1,5 +1,5 @@
 import 'package:denguecare/controllers/authentication.dart';
-import 'package:denguecare/views/userlogin_page.dart';
+import 'package:denguecare/views/login_page.dart';
 
 import 'package:denguecare/views/widgets/input_age_widget.dart';
 import 'package:denguecare/views/widgets/input_confirmpass_widget.dart';
@@ -144,7 +144,7 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                               password: _passwordController.text.trim(),
                             );
                             clear();
-                            Get.offAll(() => const UserLoginPage());
+                            Get.offAll(() => const LoginPage());
                           },
                           child: Obx(() {
                             return _authenticationController.isLoading.value
@@ -161,7 +161,7 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                       const SizedBox(height: 14),
                       InkWell(
                         onTap: () {
-                          Get.to(() => const UserLoginPage());
+                          Get.to(() => const LoginPage());
                         },
                         child: Text(
                           "Already have an accont? Sign in!",

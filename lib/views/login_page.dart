@@ -1,4 +1,4 @@
-import 'package:denguecare/views/userregister_page.dart';
+import 'package:denguecare/views/user/userregister_page.dart';
 import 'package:denguecare/views/widgets/input_widget.dart';
 import 'package:denguecare/views/widgets/input_password_widget.dart';
 import 'package:flutter/material.dart';
@@ -6,14 +6,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:denguecare/controllers/authentication.dart';
 
-class UserLoginPage extends StatefulWidget {
-  const UserLoginPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<UserLoginPage> createState() => _UserLoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _UserLoginPageState extends State<UserLoginPage> {
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   String _selectedUserType = 'User';

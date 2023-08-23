@@ -1,5 +1,5 @@
-import 'package:denguecare/views/userhome_page.dart';
-import 'package:denguecare/views/userlogin_page.dart';
+import 'package:denguecare/views/user/userhome_page.dart';
+import 'package:denguecare/views/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.green),
       debugShowCheckedModeBanner: false,
       title: 'Dengue Care App',
-      home: token == null ? const UserLoginPage() : const UserHomePage(),
+      home: token == null ? const LoginPage() : const UserHomePage(),
     );
   }
 }
