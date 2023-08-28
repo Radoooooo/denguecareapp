@@ -94,7 +94,6 @@ class _UserRegisterPageState extends State<UserRegisterPage> {
                             hintText: "Contact number",
                             border: InputBorder.none,
                             hintStyle: GoogleFonts.poppins(),
-
                             // border: UnderlineInputBorder(),
                           ),
                         ),

@@ -42,6 +42,7 @@ dependencies:
   get_storage: ^2.1.1
   otp: ^3.1.4
   intl_phone_field: ^3.1.0
+  file_picker: ^4.0.0
 
 dev_dependencies:
   flutter_test:

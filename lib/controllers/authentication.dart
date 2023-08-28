@@ -95,7 +95,7 @@ class AuthenticationController extends GetxController {
         isLoading.value = false;
         token.value = json.decode(response.body)['token'];
         box.write('token', token.value);
-        Get.offAll(() => const UserHomePage());
+        Get.offAll(() => const UserMainPage());
       } else {
         isLoading.value = false;
         Get.snackbar(

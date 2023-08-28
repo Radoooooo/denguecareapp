@@ -182,9 +182,4 @@ const _navBarItemsAdmin = [
     selectedIcon: Icon(Icons.auto_graph_rounded),
     label: 'Data Analytics',
   ),
-  // NavigationDestination(
-  //   icon: Icon(Icons.more_horiz_outlined),
-  //   selectedIcon: Icon(Icons.more_horiz_rounded),
-  //   label: 'More',
-  // ),
 ];
