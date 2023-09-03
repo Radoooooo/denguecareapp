@@ -120,16 +120,19 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       const SizedBox(height: 18),
-                      InkWell(
-                        onTap: () {
-                          Get.to(() => const UserRegisterPage());
-                        },
-                        child: Text(
-                          "Don't have an account? Sign up now!",
-                          style: GoogleFonts.poppins(
-                              fontSize: 12, color: Colors.blue),
+                      Visibility(
+                        visible: _selectedUserType == "User",
+                        child: InkWell(
+                          onTap: () async {
+                            Get.to(() => const UserRegisterPage());
+                          },
+                          child: Text(
+                            "Don't have an account? Sign up now!",
+                            style: GoogleFonts.poppins(
+                                fontSize: 12, color: Colors.blue),
+                          ),
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ),

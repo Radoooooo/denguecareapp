@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "983477084203",
+    "project_id": "denguecare-otp",
+    "storage_bucket": "denguecare-otp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983477084203:android:0f8c0dc0401fa50ffc8a6e",
+        "android_client_info": {
+          "package_name": "com.example.denguecare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983477084203-gsmlqeb9rultrokorfip9hhp1o1tmkc0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3-Qz8gmf9yUCvtqSDbTH30pX5A5Qqma8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983477084203-gsmlqeb9rultrokorfip9hhp1o1tmkc0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -13,6 +13,7 @@ class AuthenticationController extends GetxController {
   UserRegisterPage userRegisterPage = const UserRegisterPage();
   final isLoading = false.obs;
   final token = ''.obs;
+  final adminType = ''.obs;
   final box = GetStorage();
 
   Future userRegister({
@@ -137,6 +138,9 @@ class AuthenticationController extends GetxController {
         isLoading.value = false;
         token.value = json.decode(response.body)['token'];
         box.write('token', token.value);
+        adminType.value =
+            json.decode(response.body)['admin_type']; // Get the admin type
+        box.write('admin_type', adminType.value);
         Get.offAll(() => const AdminMainPage());
       } else {
         isLoading.value = false;
@@ -155,22 +159,23 @@ class AuthenticationController extends GetxController {
     }
   }
 
-  Future logout() async {
+  Future logoutadmin() async {
     try {
       isLoading.value = true;
       final response = await http.post(
         // ignore: prefer_interpolation_to_compose_strings
-        Uri.parse(url + 'logout'),
+        Uri.parse(url + 'logoutAdmin'),
         headers: {
-          'Accept': 'application/json', // Add necessary headers
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${token.value}',
           // Other headers if needed
         },
       );
 
       if (response.statusCode == 200) {
         isLoading.value = false;
-        // Logout successful, navigate to login page
 
+        // Logout successful, navigate to login page
         Get.offAll(() => const LoginPage());
       } else {
         // Handle error response

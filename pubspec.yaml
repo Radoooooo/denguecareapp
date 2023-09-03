@@ -43,6 +43,7 @@ dependencies:
   otp: ^3.1.4
   intl_phone_field: ^3.1.0
   file_picker: ^4.0.0
+  shared_preferences: ^2.2.1
 
 dev_dependencies:
   flutter_test:

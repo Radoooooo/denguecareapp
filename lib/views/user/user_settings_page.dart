@@ -82,7 +82,7 @@ class _UserSettingsPageState extends State<UserSettingsPage> {
               bool logoutConfirmed =
                   await showLogoutConfirmationDialog(context);
               if (logoutConfirmed) {
-                await _authenticationController.logout();
+                await _authenticationController.logoutadmin();
               }
             },
           ),
