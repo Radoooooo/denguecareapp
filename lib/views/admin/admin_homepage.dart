@@ -4,6 +4,7 @@ import 'package:denguecare/views/admin/admin_report_page.dart';
 import 'package:flutter/material.dart';
 import 'package:denguecare/controllers/authentication.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 Future<bool> showLogoutConfirmationDialog(BuildContext context) async {
@@ -34,10 +35,13 @@ Future<bool> showLogoutConfirmationDialog(BuildContext context) async {
 
 class AdminHomePage extends StatefulWidget {
   const AdminHomePage({super.key});
-
   @override
   State<AdminHomePage> createState() => _AdminHomePageState();
 }
+
+final box = GetStorage();
+final adminType = box.read('admin_type');
+final token = box.read('token');
 
 class _AdminHomePageState extends State<AdminHomePage> {
   final AuthenticationController _authenticationController =
@@ -47,7 +51,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DengueCare'),
+        title: Text('DengueCare : Admin : $adminType'),
       ),
       drawer: Drawer(
         child: ListView(
@@ -67,13 +71,16 @@ class _AdminHomePageState extends State<AdminHomePage> {
               ),
               onTap: () {},
             ),
-            ListTile(
-              title: const Text('Manage Admins'),
-              leading: const Icon(
-                Icons.person_pin_rounded,
-                color: Colors.black,
+            Visibility(
+              visible: adminType == 'super',
+              child: ListTile(
+                title: const Text('Manage Admins'),
+                leading: const Icon(
+                  Icons.person_pin_rounded,
+                  color: Colors.black,
+                ),
+                onTap: () {},
               ),
-              onTap: () {},
             ),
             ListTile(
               title: const Text('Prefereneces'),
@@ -108,17 +115,17 @@ class _AdminHomePageState extends State<AdminHomePage> {
                 bool logoutConfirmed =
                     await showLogoutConfirmationDialog(context);
                 if (logoutConfirmed) {
-                  await _authenticationController.logout();
+                  await _authenticationController.logoutadmin();
                 }
               },
             ),
           ],
         ),
       ),
-      body: const Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("hello admin"),
+          Text("hello admin : $token "),
         ],
       ),
     );
